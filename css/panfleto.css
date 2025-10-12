@@ -1,0 +1,192 @@
+    :root{
+      --card-bg: rgba(255,255,255,0.88);
+      --primary: #0A78E1; /* Azul principal */
+      --accent: #16A085; /* Verde de destaque */
+      --text-dark: #0B3B66;
+      --muted: #2E4D7D; 
+      --card-radius: 20px;
+      /* Mantendo a fonte Poppins do arquivo externo (se estiver importada)
+         e usando Helvetica como fallback */
+      font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      padding: 0;
+    }
+
+    /*
+      O BODY agora gerencia o fundo em tela cheia (do arquivo externo),
+      garantindo que ele cubra 100% da viewport (vh).
+    */
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      color: var(--text-dark); /* Cor principal dos textos */
+      
+      /* PROPRIEDADES DE FUNDO MIGRADO DO ARQUIVO EXTERNO */
+      background: linear-gradient(135deg, rgba(230,244,255,0.5), rgba(255,255,255,0.5)), 
+url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      
+      /* A animação fadeIn original do panfleto será mantida */
+      animation: fadeIn 1.2s ease forwards;
+    }
+    
+    /* A classe HERO (do seu HTML atual) foi renomeada para .content-wrap 
+      e serve apenas para centralizar o card, mantendo o fundo em 100% da tela.
+    */
+    .hero, .content-wrap{ 
+      width:100%;
+      max-width:1200px;
+      height:100vh;
+      min-height:600px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      box-sizing:border-box;
+      
+      /* Removido: background-image, box-shadow e o transition/animation de zoom */
+    }
+
+    /* O CARD principal (mantido do arquivo interno) */
+    .card{
+      width:100%;
+      max-width:920px;
+      background: var(--card-bg);
+      border-radius: var(--card-radius);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding:42px 44px;
+      backdrop-filter: blur(6px);
+      text-align:center;
+      transform: translateY(20px);
+      opacity:0;
+      animation: slideUp 1.2s ease forwards 0.4s;
+    }
+
+    /*
+      ANIMAÇÕES e ELEMENTOS BÁSICOS
+    */
+    @keyframes fadeIn {
+      from { opacity:0; }
+      to { opacity:1; }
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity:1;
+      }
+    }
+
+    /* Keyframes para o efeito Pulse nos botões (mantido o mais simples) */
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 6px 18px rgba(10,10,10,0.08); }
+        100% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(10,120,225,0.3), 0 0 0 0 rgba(10,120,225,0.15); }
+    }
+
+    .icon{
+      width:56px;
+      height:56px;
+      margin:0 auto 6px;
+      border-radius:50%;
+      background:#0E56AB;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      box-shadow:0 0 12px rgba(14,86,171,0.4);
+    }
+
+    h1{
+      margin:8px 0 6px;
+      color:var(--text-dark);
+      font-size:34px;
+      line-height:1.05;
+    }
+
+    p.lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:18px;
+    }
+    
+    /*
+      BOTÕES
+    */
+    .buttons{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      margin:18px 0 22px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 28px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 18px rgba(10,10,10,0.08);
+      transition: all 0.3s ease;
+      
+      /* Aplica o pulso */
+      animation: pulse 1.5s infinite alternate; 
+    }
+
+    /* Garante que o efeito pulse pare no hover */
+    .btn-primary:hover, .btn-alt:hover {
+        animation: none; 
+    }
+    
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+    }
+    .btn-primary:hover{
+      background:#095ec1;
+      transform:scale(1.05);
+      box-shadow:0 8px 20px rgba(10,120,225,0.25);
+    }
+
+    .btn-alt{
+      background:var(--accent);
+      color:#fff;
+    }
+    .btn-alt:hover{
+      background:#138d74;
+      transform:scale(1.05);
+      box-shadow:0 8px 20px rgba(22,160,133,0.25);
+    }
+    
+    /*
+      LOGOS
+    */
+    .logos-wrap{
+      margin-top:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .logos{
+      width:100%;
+      max-width:760px;
+      border-radius:10px;
+      max-height:200px;
+      object-fit:contain;
+    }
+
+    @media (max-width:800px){
+      .card{padding:28px;}
+      h1{font-size:26px;}
+      .hero, .content-wrap{height:100vh;}
+    }
