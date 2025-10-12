@@ -190,3 +190,51 @@ url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fi
       h1{font-size:26px;}
       .hero, .content-wrap{height:100vh;}
     }
+    
+    /* SEÇÃO DE MEDIA QUERIES (ADAPTAÇÃO PARA TELAS MENORES) */
+    @media (max-width:800px){
+      /*
+        Ajuste o padding do card para deixar mais espaço interno
+        e o texto não ficar tão "espremido" nas laterais.
+      */
+      .card{
+        padding:28px 20px; /* Reduz o padding horizontal em telas pequenas */
+        max-width: 90%; /* Permite que o card ocupe mais largura da tela */
+        margin: 20px; /* Adiciona uma margem externa para não "grudar" nas bordas */
+      }
+      
+      h1{font-size:26px;}
+      
+      /* Otimização: Reduzir a fonte da descrição principal */
+      p.lead{
+        font-size:16px; 
+      }
+
+      /*
+        O .hero ou .content-wrap deve ocupar 100% da altura da viewport.
+        Removemos o min-height fixo daqui.
+      */
+      .hero, .content-wrap{
+        height:100vh;
+        min-height: auto; /* Remove a altura mínima fixa para não forçar barra */
+        padding: 10px; /* Reduz o padding do container principal */
+      }
+      
+      /* Ajuste nos botões para telas muito pequenas */
+      .buttons {
+        flex-direction: column; /* Empilha os botões verticalmente */
+        gap: 10px; /* Diminui o espaçamento entre eles */
+      }
+      .btn {
+        width: 100%; /* Faz os botões ocuparem a largura total */
+        box-sizing: border-box; /* Garante que o padding seja incluído na largura */
+      }
+
+      /* Ajuste nas logos para garantir que caibam bem */
+      .logos-wrap {
+          padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+      }
+      .logos {
+          max-height: 120px; /* Reduz a altura máxima das logos */
+      }
+    }
