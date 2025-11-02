@@ -1,18 +1,21 @@
-    :root{
-      --card-bg: rgba(255,255,255,0.88);
-      --primary: #0A78E1; /* Azul principal */
-      --accent: #16A085; /* Verde de destaque */
+    :root {
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --primary: #0A78E1;
+      /* Azul principal */
+      --accent: #16A085;
+      /* Verde de destaque */
       --text-dark: #0B3B66;
-      --muted: #2E4D7D; 
+      --muted: #2E4D7D;
       --card-radius: 20px;
       /* Mantendo a fonte Poppins do arquivo externo (se estiver importada)
          e usando Helvetica como fallback */
       font-family: "Poppins", "Helvetica Neue", Arial, sans-serif;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
+    html,
+    body {
+      height: 100%;
+      margin: 0;
       padding: 0;
     }
 
@@ -20,54 +23,56 @@
       O BODY agora gerencia o fundo em tela cheia (do arquivo externo),
       garantindo que ele cubra 100% da viewport (vh).
     */
-    body{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      color: var(--text-dark); /* Cor principal dos textos */
-      
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--text-dark);
+      /* Cor principal dos textos */
+
       /* PROPRIEDADES DE FUNDO MIGRADO DO ARQUIVO EXTERNO */
-      background: linear-gradient(135deg, rgba(230,244,255,0.5), rgba(255,255,255,0.5)), 
-url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1350&q=80');
+      background: linear-gradient(135deg, rgba(230, 244, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=1350&q=80');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
-      
+
       /* A animação fadeIn original do panfleto será mantida */
       animation: fadeIn 1.2s ease forwards;
     }
-    
+
     /* A classe HERO (do seu HTML atual) foi renomeada para .content-wrap 
       e serve apenas para centralizar o card, mantendo o fundo em 100% da tela.
     */
-    .hero, .content-wrap{ 
-      width:100%;
-      max-width:1200px;
-      height:100vh;
-      min-height:600px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
-      box-sizing:border-box;
-      
+    .hero,
+    .content-wrap {
+      width: 100%;
+      max-width: 1200px;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      box-sizing: border-box;
+
       /* Removido: background-image, box-shadow e o transition/animation de zoom */
     }
 
     /* O CARD principal (mantido do arquivo interno) */
-    .card{
-      width:100%;
-      max-width:920px;
+    .card {
+      width: 100%;
+      max-width: 920px;
       background: var(--card-bg);
       border-radius: var(--card-radius);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      padding:42px 44px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 42px 44px;
       backdrop-filter: blur(6px);
-      text-align:center;
+      text-align: center;
       transform: translateY(20px);
-      opacity:0;
+      opacity: 0;
       animation: slideUp 1.2s ease forwards 0.4s;
     }
 
@@ -75,305 +80,369 @@ url('https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fi
       ANIMAÇÕES e ELEMENTOS BÁSICOS
     */
     @keyframes fadeIn {
-      from { opacity:0; }
-      to { opacity:1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     @keyframes slideUp {
       to {
         transform: translateY(0);
-        opacity:1;
+        opacity: 1;
       }
     }
 
     /* Keyframes para o efeito Pulse nos botões (mantido o mais simples) */
     @keyframes pulse {
-        0% { transform: scale(1); box-shadow: 0 6px 18px rgba(10,10,10,0.08); }
-        100% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(10,120,225,0.3), 0 0 0 0 rgba(10,120,225,0.15); }
+      0% {
+        transform: scale(1);
+        box-shadow: 0 6px 18px rgba(10, 10, 10, 0.08);
+      }
+
+      100% {
+        transform: scale(1.02);
+        box-shadow: 0 10px 25px rgba(10, 120, 225, 0.3), 0 0 0 0 rgba(10, 120, 225, 0.15);
+      }
     }
 
-    .icon{
-      width:56px;
-      height:56px;
-      margin:0 auto 6px;
-      border-radius:50%;
-      background:#0E56AB;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      box-shadow:0 0 12px rgba(14,86,171,0.4);
-    }
-    h1{
-      margin:8px 0 6px;
-      color:var(--text-dark);
-      font-size:34px;
-      line-height:1.05;
+    .icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      background: #0E56AB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 0 12px rgba(14, 86, 171, 0.4);
     }
 
-    p.lead{
-      margin:0 0 18px;
-      color:var(--muted);
-      font-size:18px;
+    h1 {
+      margin: 8px 0 6px;
+      color: var(--text-dark);
+      font-size: 34px;
+      line-height: 1.05;
     }
-    
+
+    p.lead {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
     /*
       BOTÕES
     */
-    .buttons{
-      display:flex;
-      gap:20px;
-      justify-content:center;
-      margin:18px 0 22px;
-      flex-wrap:wrap;
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 18px 0 22px;
+      flex-wrap: wrap;
     }
 
-    .btn{
-      display:inline-block;
-      padding:12px 28px;
-      border-radius:30px;
-      text-decoration:none;
-      font-weight:600;
-      box-shadow:0 6px 18px rgba(10,10,10,0.08);
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(10, 10, 10, 0.08);
       transition: all 0.3s ease;
-      
+
       /* Aplica o pulso */
-      animation: pulse 1.5s infinite alternate; 
+      animation: pulse 1.5s infinite alternate;
     }
 
     /* Garante que o efeito pulse pare no hover */
-    .btn-primary:hover, .btn-alt:hover {
-        animation: none; 
-    }
-    
-    .btn-primary{
-      background:var(--primary);
-      color:#fff;
-    }
-    .btn-primary:hover{
-      background:#095ec1;
-      transform:scale(1.05);
-      box-shadow:0 8px 20px rgba(10,120,225,0.25);
+    .btn-primary:hover,
+    .btn-alt:hover {
+      animation: none;
     }
 
-    .btn-alt{
-      background:var(--accent);
-      color:#fff;
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
     }
-    .btn-alt:hover{
-      background:#138d74;
-      transform:scale(1.05);
-      box-shadow:0 8px 20px rgba(22,160,133,0.25);
+
+    .btn-primary:hover {
+      background: #095ec1;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(10, 120, 225, 0.25);
     }
-    
+
+    .btn-alt {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-alt:hover {
+      background: #138d74;
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(22, 160, 133, 0.25);
+    }
+
     /*
       LOGOS
     */
-    .logos-wrap{
-      margin-top:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .logos-wrap {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .logos{
-      width:100%;
-      max-width:760px;
-      border-radius:10px;
-      max-height:200px;
-      object-fit:contain;
+    .logos {
+      width: 100%;
+      max-width: 760px;
+      border-radius: 10px;
+      max-height: 200px;
+      object-fit: contain;
     }
 
-    @media (max-width:800px){
-      .card{padding:28px;}
-      h1{font-size:26px;}
-      .hero, .content-wrap{height:100vh;}
+    @media (max-width:800px) {
+      .card {
+        padding: 28px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .hero,
+      .content-wrap {
+        height: 100vh;
+      }
     }
-    
+
     /* SEÇÃO DE MEDIA QUERIES (ADAPTAÇÃO PARA TELAS MENORES) */
-    @media (max-width:800px){
+    @media (max-width:800px) {
+
       /*
         Ajuste o padding do card para deixar mais espaço interno
         e o texto não ficar tão "espremido" nas laterais.
       */
-      .card{
-        padding:28px 20px; /* Reduz o padding horizontal em telas pequenas */
-        max-width: 90%; /* Permite que o card ocupe mais largura da tela */
-        margin: 20px; /* Adiciona uma margem externa para não "grudar" nas bordas */
+      .card {
+        padding: 28px 20px;
+        /* Reduz o padding horizontal em telas pequenas */
+        max-width: 90%;
+        /* Permite que o card ocupe mais largura da tela */
+        margin: 20px;
+        /* Adiciona uma margem externa para não "grudar" nas bordas */
       }
-      
-      h1{font-size:26px;}
-      
+
+      h1 {
+        font-size: 26px;
+      }
+
       /* Otimização: Reduzir a fonte da descrição principal */
-      p.lead{
-        font-size:16px; 
+      p.lead {
+        font-size: 16px;
       }
 
       /*
         O .hero ou .content-wrap deve ocupar 100% da altura da viewport.
         Removemos o min-height fixo daqui.
       */
-      .hero, .content-wrap{
-        height:100vh;
-        min-height: auto; /* Remove a altura mínima fixa para não forçar barra */
-        padding: 10px; /* Reduz o padding do container principal */
+      .hero,
+      .content-wrap {
+        height: 100vh;
+        min-height: auto;
+        /* Remove a altura mínima fixa para não forçar barra */
+        padding: 10px;
+        /* Reduz o padding do container principal */
       }
-      
+
       /* Ajuste nos botões para telas muito pequenas */
       .buttons {
-        flex-direction: column; /* Empilha os botões verticalmente */
-        gap: 10px; /* Diminui o espaçamento entre eles */
+        flex-direction: column;
+        /* Empilha os botões verticalmente */
+        gap: 10px;
+        /* Diminui o espaçamento entre eles */
       }
+
       .btn {
-        width: 100%; /* Faz os botões ocuparem a largura total */
-        box-sizing: border-box; /* Garante que o padding seja incluído na largura */
+        width: 100%;
+        /* Faz os botões ocuparem a largura total */
+        box-sizing: border-box;
+        /* Garante que o padding seja incluído na largura */
       }
 
       /* Ajuste nas logos para garantir que caibam bem */
       .logos-wrap {
-          padding: 0 10px; /* Adiciona um pequeno padding nas laterais */
+        padding: 0 10px;
+        /* Adiciona um pequeno padding nas laterais */
       }
+
       .logos {
-          max-height: 120px; /* Reduz a altura máxima das logos */
+        max-height: 120px;
+        /* Reduz a altura máxima das logos */
       }
     }
-/* --- Botões padrão --- */
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
 
-.btn {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 30px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
+    /* --- Botões padrão --- */
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
 
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
-.btn-primary:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.btn-alt {
-  background-color: #28a745;
-  color: #fff;
-}
-.btn-alt:hover {
-  background-color: #1e7e34;
-  transform: translateY(-2px);
-}
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+    }
 
-/* --- Botão de catálogo com destaque --- */
-.btn-catalogo {
-  background-color: #0f9d58;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  animation: pulseCatalogo 1.6s infinite;
-}
-.btn-catalogo:hover {
-  background-color: #0c7c44;
-  transform: scale(1.07);
-}
+    .btn-primary:hover {
+      background-color: #0056b3;
+      transform: translateY(-2px);
+    }
 
-@keyframes pulseCatalogo {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(15, 157, 88, 0.4); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(15, 157, 88, 0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(15, 157, 88, 0); }
-}
+    .btn-alt {
+      background-color: #28a745;
+      color: #fff;
+    }
 
-/* Botão flutuante do WhatsApp */
-.whatsapp-float {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 64px;
-  height: 64px;
-  background-color: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-  z-index: 1000;
-  animation: pulseZap 1.6s infinite ease-in-out;
-  transition: transform 0.3s ease;
-}
+    .btn-alt:hover {
+      background-color: #1e7e34;
+      transform: translateY(-2px);
+    }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
-}
+    /* --- Botão de catálogo com destaque --- */
+    .btn-catalogo {
+      background-color: #0f9d58;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      animation: pulseCatalogo 1.6s infinite;
+    }
 
-.whatsapp-float img {
-  width: 36px;
-  height: 36px;
-  filter: invert(1);
-}
+    .btn-catalogo:hover {
+      background-color: #0c7c44;
+      transform: scale(1.07);
+    }
 
-/* Animação pulsante */
-@keyframes pulseZap {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  }
-  70% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
+    @keyframes pulseCatalogo {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(15, 157, 88, 0.4);
+      }
+
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(15, 157, 88, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(15, 157, 88, 0);
+      }
+    }
+
+    /* Botão flutuante do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 64px;
+      height: 64px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      animation: pulseZap 1.6s infinite ease-in-out;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-float img {
+      width: 36px;
+      height: 36px;
+      filter: invert(1);
+    }
+
+    /* Animação pulsante */
+    @keyframes pulseZap {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+      }
+
+      70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
 
 
-/* Balão de texto */
-.zap-tooltip {
-  position: absolute;
-  right: 80px;
-  bottom: 18px;
-  background-color: #fff;
-  color: #333;
-  font-size: 15px;
-  font-weight: 500;
-  padding: 10px 14px;
-  border-radius: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  white-space: nowrap;
-  opacity: 0;
-  transform: translateX(15px);
-  animation: fadeInTooltip 1.6s ease forwards 1s;
-}
+    /* Balão de texto */
+    .zap-tooltip {
+      position: absolute;
+      right: 80px;
+      bottom: 18px;
+      background-color: #fff;
+      color: #333;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      white-space: nowrap;
 
-/* Animação suave do texto */
-@keyframes fadeInTooltip {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+      /* ESTADOS INICIAIS: Invisível e ligeiramente deslocado */
+      opacity: 0;
+      visibility: hidden;
+      /* Adicionado para acessibilidade/melhor performance */
+      transform: translateX(15px) translateY(-50%);
+      /* Ajustado o transform para centralizar melhor */
 
-/* Pequeno triângulo (pontinha do balão) */
-.zap-tooltip::after {
-  content: "";
-  position: absolute;
-  right: -6px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 8px solid #fff;
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-}
+      /* NOVO: Adiciona transição para a aparição suave */
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
 
+    /* MOSTRA O TOOLTIP APENAS NO HOVER */
+    .whatsapp-float:hover .zap-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0) translateY(-50%);
+    }
+
+    /* Pequeno triângulo (pontinha do balão) */
+    .zap-tooltip::after {
+      content: "";
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 8px solid #fff;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
